@@ -1,6 +1,11 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'user.g.dart';
+
 /// All possible roles user can have.
 enum Role { admin, agent, moderator, user }
 
+@JsonSerializable(explicitToJson: true)
 class User {
   /// Created user timestamp, in ms
   final int? createdAt;

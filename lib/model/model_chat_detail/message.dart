@@ -8,17 +8,15 @@ enum MessageType { custom, file, image, text, unsupported }
 enum Status { delivered, error, seen, sending, sent }
 
 abstract class Message {
-  /// Converts a particular message to the map representation, encodable to JSON.
-  Map<String, dynamic> toJson();
+  // Map<String, dynamic> toJson();
 
-  /// User who sent this message
-  final User? author;
+  final User author;
 
   /// Created message timestamp, in ms
   final int? createdAt;
 
   /// Unique ID of the message
-  final String? id;
+  final String id;
 
   /// Additional custom metadata or attributes related to the message
   final Map<String, dynamic>? metadata;
@@ -38,16 +36,17 @@ abstract class Message {
   /// Updated message timestamp, in ms
   final int? updatedAt;
 
-  Message(
-      {this.author,
-      this.createdAt,
-      this.id,
-      this.metadata,
-      this.remoteId,
-      this.roomId,
-      this.status,
-      this.type,
-      this.updatedAt});
+  const Message({
+    required this.author,
+    this.createdAt,
+    required this.id,
+    this.metadata,
+    this.remoteId,
+    this.roomId,
+    this.status,
+    this.type,
+    this.updatedAt,
+  });
 
   Message copyWith({
     Map<String, dynamic>? metadata,
